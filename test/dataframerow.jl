@@ -74,6 +74,12 @@ module TestDataFrameRow
     gd = DataFrames.group_rows(df5[1,:])
     @test gd.ngroups == 1
 
+    # append
+    df = DataFrame(A = 1:2, B = 'a':'b')
+    df2 = DataFrame(A = 1:3, B = 'a':'c')
+    r = DataFrameRow(df2, 3)
+    @test append!(df, r) == df2
+
     # getproperty, setproperty! and propertynames
     if VERSION >= v"0.7.0-DEV.3067"
         r = DataFrameRow(df, 1)

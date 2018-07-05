@@ -966,7 +966,7 @@ function categorical!(df::DataFrame)
     df
 end
 
-function Base.append!(df1::DataFrame, df2::AbstractDataFrame)
+function Base.append!(df1::DataFrame, df2::Union{AbstractDataFrame, DataFrameRow})
     _names(df1) == _names(df2) || error("Column names do not match")
     nrows, ncols = size(df1)
     try
